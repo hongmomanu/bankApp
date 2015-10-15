@@ -63,7 +63,6 @@
   )
 (def.controller starter.controllers.PlaylistCtrl [$scope $stateParams]
 
-
   )
 (def.controller starter.controllers.mapCtrl [$scope $stateParams]
 
@@ -88,8 +87,6 @@
     )
 
   )
-
-
 
 
 
