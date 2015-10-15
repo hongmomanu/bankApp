@@ -69,7 +69,7 @@
 
   (println "map")
   (let [
-         map (.setView (js/L.map "map" (obj :zoomControl false ))  (array 30.274089 120.15506900000003) 13)
+         map (.setView (js/L.map "map" (obj :zoomControl false ))  (array 30.00641 120.580176 ) 13)
          ]
     (.addTo
       ( js/L.tileLayer "http://t{s}.tianditu.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}"
