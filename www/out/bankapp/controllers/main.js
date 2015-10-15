@@ -6,8 +6,8 @@ goog.require('jayq.core');
 cljs.core.enable_console_print_BANG_.call(null);
 bankapp.controllers.main.starter_controllers = angular.module("starter.controllers",[]);
 bankapp.controllers.main.starter_controllers_AppCtrl = ["$scope","$ionicModal","$timeout",(function ($scope,$ionicModal,$timeout){
-var o_SHARP__6624 = $scope;
-(o_SHARP__6624["loginData"] = cljs.core.PersistentArrayMap.EMPTY);
+var o_SHARP__6658 = $scope;
+(o_SHARP__6658["loginData"] = cljs.core.PersistentArrayMap.EMPTY);
 
 
 $ionicModal.fromTemplateUrl("templates/login.html",cljs.core.clj__GT_js.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"scope","scope",-439358418),$scope], null))).then((function (modal){
@@ -17,19 +17,19 @@ var o_SHARP_ = $scope;
 return o_SHARP_;
 }));
 
-var o_SHARP__6625 = $scope;
-(o_SHARP__6625["closeLogin"] = ((function (o_SHARP__6625){
+var o_SHARP__6659 = $scope;
+(o_SHARP__6659["closeLogin"] = ((function (o_SHARP__6659){
 return (function (){
 return ($scope["modal"]).hide();
-});})(o_SHARP__6625))
+});})(o_SHARP__6659))
 );
 
 
-var o_SHARP__6626 = $scope;
-(o_SHARP__6626["login"] = ((function (o_SHARP__6626){
+var o_SHARP__6660 = $scope;
+(o_SHARP__6660["login"] = ((function (o_SHARP__6660){
 return (function (){
 return ($scope["modal"]).show();
-});})(o_SHARP__6626))
+});})(o_SHARP__6660))
 );
 
 
@@ -66,27 +66,27 @@ cljs.core.println.call(null,"map");
 
 var map = (function (){var obj_SHARP_ = L;
 var fn_SHARP_ = (obj_SHARP_["map"]);
-return fn_SHARP_.call(obj_SHARP_,"map",(function (){var G__6627 = {};
-(G__6627["zoomControl"] = false);
+return fn_SHARP_.call(obj_SHARP_,"map",(function (){var G__6661 = {};
+(G__6661["zoomControl"] = false);
 
-return G__6627;
+return G__6661;
 })());
-})().setView([30.274089,120.15506900000003],(13));
+})().setView([30.00641,120.580176],(13));
 (function (){var obj_SHARP_ = L;
 var fn_SHARP_ = (obj_SHARP_["tileLayer"]);
-return fn_SHARP_.call(obj_SHARP_,"http://t{s}.tianditu.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",(function (){var G__6631 = {};
-(G__6631["subdomains"] = "012345");
+return fn_SHARP_.call(obj_SHARP_,"http://t{s}.tianditu.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",(function (){var G__6665 = {};
+(G__6665["subdomains"] = "012345");
 
-return G__6631;
+return G__6665;
 })());
 })().addTo(map);
 
 return (function (){var obj_SHARP_ = L;
 var fn_SHARP_ = (obj_SHARP_["tileLayer"]);
-return fn_SHARP_.call(obj_SHARP_,[cljs.core.str("http://t{s}.tianditu.com/cva_w/wmts?"),cljs.core.str("SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles"),cljs.core.str("&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}")].join(''),(function (){var G__6635 = {};
-(G__6635["subdomains"] = "012345");
+return fn_SHARP_.call(obj_SHARP_,[cljs.core.str("http://t{s}.tianditu.com/cva_w/wmts?"),cljs.core.str("SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles"),cljs.core.str("&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}")].join(''),(function (){var G__6669 = {};
+(G__6669["subdomains"] = "012345");
 
-return G__6635;
+return G__6669;
 })());
 })().addTo(map);
 })];
