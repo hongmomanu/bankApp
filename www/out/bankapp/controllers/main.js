@@ -6,8 +6,8 @@ goog.require('jayq.core');
 cljs.core.enable_console_print_BANG_.call(null);
 bankapp.controllers.main.starter_controllers = angular.module("starter.controllers",[]);
 bankapp.controllers.main.starter_controllers_AppCtrl = ["$scope","$ionicModal","$timeout",(function ($scope,$ionicModal,$timeout){
-var o_SHARP__6692 = $scope;
-(o_SHARP__6692["loginData"] = cljs.core.PersistentArrayMap.EMPTY);
+var o_SHARP__6399 = $scope;
+(o_SHARP__6399["loginData"] = cljs.core.PersistentArrayMap.EMPTY);
 
 
 $ionicModal.fromTemplateUrl("templates/login.html",cljs.core.clj__GT_js.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"scope","scope",-439358418),$scope], null))).then((function (modal){
@@ -17,19 +17,19 @@ var o_SHARP_ = $scope;
 return o_SHARP_;
 }));
 
-var o_SHARP__6693 = $scope;
-(o_SHARP__6693["closeLogin"] = ((function (o_SHARP__6693){
+var o_SHARP__6400 = $scope;
+(o_SHARP__6400["closeLogin"] = ((function (o_SHARP__6400){
 return (function (){
 return ($scope["modal"]).hide();
-});})(o_SHARP__6693))
+});})(o_SHARP__6400))
 );
 
 
-var o_SHARP__6694 = $scope;
-(o_SHARP__6694["login"] = ((function (o_SHARP__6694){
+var o_SHARP__6401 = $scope;
+(o_SHARP__6401["login"] = ((function (o_SHARP__6401){
 return (function (){
 return ($scope["modal"]).show();
-});})(o_SHARP__6694))
+});})(o_SHARP__6401))
 );
 
 
@@ -64,31 +64,40 @@ angular.module("starter.controllers").controller("PlaylistCtrl",bankapp.controll
 bankapp.controllers.main.starter_controllers_mapCtrl = ["$scope","$stateParams",(function ($scope,$stateParams){
 cljs.core.println.call(null,"map");
 
-var map = (function (){var obj_SHARP_ = L;
+var map_6414 = (function (){var obj_SHARP_ = L;
 var fn_SHARP_ = (obj_SHARP_["map"]);
-return fn_SHARP_.call(obj_SHARP_,"map",(function (){var G__6695 = {};
-(G__6695["zoomControl"] = false);
+return fn_SHARP_.call(obj_SHARP_,"map",(function (){var G__6402 = {};
+(G__6402["zoomControl"] = false);
 
-return G__6695;
+return G__6402;
 })());
 })().setView([30.00641,120.580176],(13));
 (function (){var obj_SHARP_ = L;
 var fn_SHARP_ = (obj_SHARP_["tileLayer"]);
-return fn_SHARP_.call(obj_SHARP_,"http://t{s}.tianditu.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",(function (){var G__6699 = {};
-(G__6699["subdomains"] = "012345");
+return fn_SHARP_.call(obj_SHARP_,"http://t{s}.tianditu.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",(function (){var G__6406 = {};
+(G__6406["subdomains"] = "012345");
 
-return G__6699;
+return G__6406;
 })());
-})().addTo(map);
+})().addTo(map_6414);
 
-return (function (){var obj_SHARP_ = L;
+(function (){var obj_SHARP_ = L;
 var fn_SHARP_ = (obj_SHARP_["tileLayer"]);
-return fn_SHARP_.call(obj_SHARP_,[cljs.core.str("http://t{s}.tianditu.com/cva_w/wmts?"),cljs.core.str("SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles"),cljs.core.str("&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}")].join(''),(function (){var G__6703 = {};
-(G__6703["subdomains"] = "012345");
+return fn_SHARP_.call(obj_SHARP_,[cljs.core.str("http://t{s}.tianditu.com/cva_w/wmts?"),cljs.core.str("SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles"),cljs.core.str("&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}")].join(''),(function (){var G__6410 = {};
+(G__6410["subdomains"] = "012345");
 
-return G__6703;
+return G__6410;
 })());
-})().addTo(map);
+})().addTo(map_6414);
+
+var o_SHARP_ = $scope;
+(o_SHARP_["getbanks"] = ((function (o_SHARP_){
+return (function (type){
+return alert(type);
+});})(o_SHARP_))
+);
+
+return o_SHARP_;
 })];
 
 angular.module("starter.controllers").controller("mapCtrl",bankapp.controllers.main.starter_controllers_mapCtrl);

@@ -86,6 +86,13 @@
 
     )
 
+  (! $scope.getbanks (fn [type]
+
+                      (js/alert type)
+
+                      ))
+
+
   )
 
 
