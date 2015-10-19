@@ -16,12 +16,27 @@
 
 (enable-console-print!)
 
+(def serverurl "http://192.168.2.100:3000/")
+
+;(def bankmap nil)
+(def global-hub (atom {}))
+
 
 (def.module starter.controllers [])
 
 
+(def.service starter.MapService [$http]
+  (obj
+    :getbanksbytype (fn [type]
+                (-> $http
+                  (.post (str serverurl "getbanksbytype") (when-not (nil? type) (obj  :type  type  )))
+                  (.then (fn [response] response))))
+
+    ))
+
+
 ;;加载初始化控制器
-(def.controller starter.controllers.AppCtrl [$scope $ionicModal $timeout]
+(def.controller starter.controllers.AppCtrl [$scope $ionicModal $timeout MapService]
 
   (! $scope.loginData  {})
 
@@ -33,6 +48,28 @@
 
 
 
+
+  (! $scope.getbanks (fn [type]
+
+                       (.bindPopup
+                       (.addTo (js/L.marker (clj->js [30 120])
+                                 (obj :icon ( js/L.AwesomeMarkers.icon (obj :icon "location" :prefix "ion"
+
+                                                                         ))) )
+                         (get @global-hub "map"))
+                         "hello jack"
+                         )
+
+                       (-> MapService
+                         (.getbanksbytype type)
+                         (.then (fn [response]
+
+                                   ;(dorun (map #(makemark %) response.data) )
+                                  (makemark (first response.data))
+
+                                  )))
+
+                       ))
 
 
   (! $scope.closeLogin (fn [] ( .hide $scope.modal
@@ -67,30 +104,28 @@
 (def.controller starter.controllers.mapCtrl [$scope $stateParams]
 
   (println "map")
+  (swap! global-hub assoc "map" (.setView (js/L.map "map" (obj :zoomControl false  ))  (array 30.00641 120.580176 ) 13))
+  ;(! bankmap  (.setView (js/L.map "map" (obj :zoomControl false ))  (array 30.00641 120.580176 ) 13))
   (let [
-         map (.setView (js/L.map "map" (obj :zoomControl false ))  (array 30.00641 120.580176 ) 13)
+         bankmap (get @global-hub "map")
          ]
     (.addTo
       ( js/L.tileLayer "http://t{s}.tianditu.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}"
         (obj :subdomains "012345")
         )
-      map
+      bankmap
     )
     (.addTo
       ( js/L.tileLayer (str "http://t{s}.tianditu.com/cva_w/wmts?"
         "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles"
         "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}") (obj :subdomains "012345")
         )
-      map
+      bankmap
     )
 
     )
 
-  (! $scope.getbanks (fn [type]
 
-                      (js/alert type)
-
-                      ))
 
 
   )
@@ -101,6 +136,27 @@
 
 
 
+(defn makemark [item]
+   (.reverse item.loc.coordinates )
+  (let [
+          redMarker ( js/L.AwesomeMarkers.icon (obj :icon "location" :prefix "ion"
+                                                  :iconColor "black"
+                                                 ))
+
+         ]
+
+    (.openPopup (.bindPopup
+
+      (.addTo (js/L.marker item.loc.coordinates
+                  (obj :icon ( js/L.AwesomeMarkers.icon (obj :icon "location" :prefix "ion"
+
+                                                       ))) )
+        (get @global-hub "map"))
+
+      "A pretty CSS3 popup.<br> Easily customizable" ))
+    )
+
+  )
 (defn foo [a b]
   (* a b)) ;; CHANGED
 
