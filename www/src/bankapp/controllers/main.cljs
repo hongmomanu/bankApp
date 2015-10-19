@@ -16,7 +16,7 @@
 
 (enable-console-print!)
 
-(def serverurl "http://192.168.2.100:3000/")
+(def serverurl "http://localhost:3000/")
 
 ;(def bankmap nil)
 (def global-hub (atom {}))
@@ -51,21 +51,14 @@
 
   (! $scope.getbanks (fn [type]
 
-                       (.bindPopup
-                       (.addTo (js/L.marker (clj->js [30 120])
-                                 (obj :icon ( js/L.AwesomeMarkers.icon (obj :icon "location" :prefix "ion"
 
-                                                                         ))) )
-                         (get @global-hub "map"))
-                         "hello jack"
-                         )
 
                        (-> MapService
                          (.getbanksbytype type)
                          (.then (fn [response]
 
-                                   ;(dorun (map #(makemark %) response.data) )
-                                  (makemark (first response.data))
+                                  (dorun (map #(makemark %) response.data) )
+                                  #_(makemark (first response.data))
 
                                   )))
 
