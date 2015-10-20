@@ -19,7 +19,7 @@
 (def serverurl "http://localhost:3000/")
 
 ;(def bankmap nil)
-(def global-hub (atom {}))
+(def global-hub (atom {:markers []}))
 
 
 (def.module starter.controllers [])
@@ -51,14 +51,23 @@
 
   (! $scope.getbanks (fn [type]
 
-
+                       (println "1212122")
 
                        (-> MapService
                          (.getbanksbytype type)
                          (.then (fn [response]
 
-                                  (dorun (map #(makemark %) response.data) )
-                                  #_(makemark (first response.data))
+                                  (println (get @global-hub "markers"))
+
+                           (if (empty? response.data)
+
+                             (dorun (map #(.removeLayer (get @global-hub "map") % ) (get @global-hub "markers")) )
+
+                             (dorun (map #(makemark %) response.data) )
+                             )
+
+
+
 
                                   )))
 
@@ -137,6 +146,8 @@
                                                  ))
 
          ]
+
+    (swap! global-hub assoc "markers" (conj (get @global-hub "markers") redMarker ))
 
     (.openPopup (.bindPopup
 
