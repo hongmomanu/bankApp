@@ -32,13 +32,15 @@
                   (.post (str serverurl "getbanksbytype") (when-not (nil? type) (obj  :type  type  )))
                   (.then (fn [response] response))))
 
+
     ))
 
 
 ;;加载初始化控制器
-(def.controller starter.controllers.AppCtrl [$scope $ionicModal $timeout  $ionicLoading MapService]
+(def.controller starter.controllers.AppCtrl [$scope $ionicModal $timeout  $ionicLoading $compile MapService]
 
   (! $scope.loginData  {})
+
 
   (-> (.fromTemplateUrl  $ionicModal "templates/login.html" (clj->js {
                                                                        :scope $scope
@@ -55,15 +57,22 @@
                        (dorun (map #(.removeLayer (get @global-hub "map")  % ) (get @global-hub "markers")) )
                        (swap! global-hub assoc "markers" [])
                        (.show $ionicLoading (obj :template "加载中.."  :duration 30000))
-                       (-> MapService
-                         (.getbanksbytype type)
-                         (.then (fn [response]
-                                  (.hide $ionicLoading)
-                             (dorun (map #(makemark %) response.data) )
+                       (let [
+                              type (if (= type "all") nil type)
+                              ]
+                         (-> MapService
+                           (.getbanksbytype type)
+                           (.then (fn [response]
+                                    (.hide $ionicLoading)
+                                    (dorun (map #(makemark % $compile $scope) response.data) )
 
-                                  )))
+                                    )))
+                         )
+
 
                        ))
+
+
 
 
   (! $scope.closeLogin (fn [] ( .hide $scope.modal
@@ -80,6 +89,7 @@
                       )))
 
 (def.controller starter.controllers.PlaylistsCtrl [$scope]
+  ;;(! $scope.tipdetail (fn [bankid] (js/alert "wwwww")))
   (! $scope.playlists (clj->js [
                                  { :title "Reggae"  :id 1 }
                                  { :title  "Chill"  :id 2 }
@@ -92,17 +102,23 @@
   ;;(println $scope.playlists)
 
   )
-(def.controller starter.controllers.PlaylistCtrl [$scope $stateParams]
-
+(def.controller starter.controllers.PlaylistCtrl [$scope $stateParams $compile]
+  ;(! $scope.tipdetail (fn [bankid] (js/alert "wwwww")))
   )
-(def.controller starter.controllers.mapCtrl [$scope $stateParams]
+(def.controller starter.controllers.mapCtrl [$scope $stateParams $compile]
 
+  (! $scope.tipdetail (fn [bankid] (println "hhhhhh")))
   (println "map")
+
   (swap! global-hub assoc "map" (.setView (js/L.map "map" (obj :zoomControl false  ))  (array 30.00641 120.580176 ) 13))
   ;(! bankmap  (.setView (js/L.map "map" (obj :zoomControl false ))  (array 30.00641 120.580176 ) 13))
   (let [
          bankmap (get @global-hub "map")
          ]
+    (.on bankmap "popupopen" (fn [e]
+                                       (($compile   (js/$ ".markdiv")) $scope )
+
+                                       ) )
     (.addTo
       ( js/L.tileLayer "http://t{s}.tianditu.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}"
         (obj :subdomains "012345")
@@ -122,6 +138,8 @@
 
 
 
+
+
   )
 
 
@@ -130,7 +148,7 @@
 
 
 
-(defn makemark [item]
+(defn makemark [item $compile $scope]
   (.reverse item.loc.coordinates )
   (let [
           redMarker ( js/L.AwesomeMarkers.icon (obj :icon "location" :prefix "ion"
@@ -145,12 +163,20 @@
                                                                                       ))) )
                                       (get @global-hub "map"))
 
-                                    (str "<div class=\"tipdiv\">名称:" item.bankname "<br>" "地址:" item.address "<br></div>"
-                                      "<div class=\"tipbutton\"><a class=\"button button-icon icon ion-android-compass\">导航</a>"
-                                      "&nbsp;&nbsp;&nbsp;&nbsp;<a class=\"button button-icon icon ion-android-apps\">详细</a></div>"
-                                      ) ))
+
+                                              (str "<div class=\"markdiv\"><div class=\"tipdiv\">名称 : " item.bankname "<br>" "地址 : " item.address "<br></div>"
+                                                "<div class=\"tipbutton\"><button class=\"button button-clear icon button-calm ion-android-compass\">导航</button>"
+                                                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button  ng-click=\"tipdetail('" item.bankid "')\"  class=\"button   button-clear  icon  button-calm     ion-android-apps\">详细</button></div></div>"
+                                                )
+
+                                    ))
 
          ]
+
+    ;(.on markerlayer "click" (fn [] (println "ds")))
+
+
+
 
     (swap! global-hub assoc "markers" (conj (get @global-hub "markers") markerlayer ))
 
@@ -158,6 +184,7 @@
     )
 
   )
+
 (defn foo [a b]
   (* a b)) ;; CHANGED
 

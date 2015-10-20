@@ -7,9 +7,11 @@
   flex: 0 1 100% !important;
 }
 .tipdiv{
-  font-size: large;
-  color: #222222;
+  font-size: medium;
+  color:darkgrey;
 }
 .tipbutton{
   text-align: center;
+  color: #222222;
 }
+
