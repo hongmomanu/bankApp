@@ -36,7 +36,7 @@
 
 
 ;;加载初始化控制器
-(def.controller starter.controllers.AppCtrl [$scope $ionicModal $timeout MapService]
+(def.controller starter.controllers.AppCtrl [$scope $ionicModal $timeout  $ionicLoading MapService]
 
   (! $scope.loginData  {})
 
@@ -52,22 +52,14 @@
   (! $scope.getbanks (fn [type]
 
                        (println "1212122")
-
+                       (dorun (map #(.removeLayer (get @global-hub "map")  % ) (get @global-hub "markers")) )
+                       (swap! global-hub assoc "markers" [])
+                       (.show $ionicLoading (obj :template "加载中.."  :duration 30000))
                        (-> MapService
                          (.getbanksbytype type)
                          (.then (fn [response]
-
-                                  (println (get @global-hub "markers"))
-
-                           (if (empty? response.data)
-
-                             (dorun (map #(.removeLayer (get @global-hub "map") % ) (get @global-hub "markers")) )
-
+                                  (.hide $ionicLoading)
                              (dorun (map #(makemark %) response.data) )
-                             )
-
-
-
 
                                   )))
 
@@ -139,25 +131,27 @@
 
 
 (defn makemark [item]
-   (.reverse item.loc.coordinates )
+  (.reverse item.loc.coordinates )
   (let [
           redMarker ( js/L.AwesomeMarkers.icon (obj :icon "location" :prefix "ion"
                                                   :iconColor "black"
                                                  ))
 
+          markerlayer (.openPopup (.bindPopup
+
+                                    (.addTo (js/L.marker item.loc.coordinates
+                                              (obj :icon ( js/L.AwesomeMarkers.icon (obj :icon "location" :prefix "ion"
+
+                                                                                      ))) )
+                                      (get @global-hub "map"))
+
+                                    (str "名称:" item.bankname "<br>" "地址:" item.address) ))
+
          ]
 
-    (swap! global-hub assoc "markers" (conj (get @global-hub "markers") redMarker ))
+    (swap! global-hub assoc "markers" (conj (get @global-hub "markers") markerlayer ))
 
-    (.openPopup (.bindPopup
 
-      (.addTo (js/L.marker item.loc.coordinates
-                  (obj :icon ( js/L.AwesomeMarkers.icon (obj :icon "location" :prefix "ion"
-
-                                                       ))) )
-        (get @global-hub "map"))
-
-      "A pretty CSS3 popup.<br> Easily customizable" ))
     )
 
   )
