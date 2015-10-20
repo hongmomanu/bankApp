@@ -18,57 +18,73 @@
     </ion-header-bar>
     <ion-content class="blackmenu">
       <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
+        <ion-item menu-close class=" item item-avatar-left  item-icon-right" ng-click="login()">
+          <i class="icon ion-log-in" style="left: 18px;"></i>
+          <i class="icon ion-ios-arrow-forward"></i>
+          <div class="menubankname">登录</div>
         </ion-item>
         <!--<ion-item menu-close href="#/app/search">
           Search
         </ion-item>-->
-        <ion-item menu-close ng-click="getbanks('all')">
-          <a class="menubankname" >全部银行</a>
+        <ion-item menu-close class="item item-avatar-left  item-icon-right" ng-click="getbanks('all')">
+          <img style="width: 40px;height: 40px" src="img/bank.jpg">
+          <i class="icon ion-ios-arrow-forward"></i>
+          <div class="menubankname" >全部银行</div>
 
         </ion-item>
-        <ion-item menu-close class="item-icon-left item-icon-right" ng-click="getbanks('绍兴银行')">
-          <i class="icon ion-person-add sxbank-button"></i>
+        <ion-item menu-close class="item item-avatar-left  item-icon-right" ng-click="getbanks('绍兴银行')">
+          <!--<i class="icon ion-person-add sxbank-button"></i>-->
+          <img style="width: 40px;height: 40px" src="img/sxyh.png">
           <i class="icon ion-ios-arrow-forward"></i>
-          <a class="menubankname" >绍兴银行</a>
+          <div class="menubankname" >绍兴银行</div>
         </ion-item>
-        <ion-item menu-close class="item-icon-left item-icon-right" ng-click="getbanks('中国银行')">
-          <i class="icon ion-person-add chinabank-button"></i>
+        <ion-item menu-close class=" item item-avatar-left item-icon-right" ng-click="getbanks('中国银行')">
+          <!--<i class="icon ion-person-add chinabank-button"></i>-->
+          <img style="width: 40px;height: 40px" src="img/chinabank.jpg">
           <i class="icon ion-ios-arrow-forward"></i>
-          <a class="menubankname" >中国银行</a>
+          <div class="menubankname" >中国银行</div>
         </ion-item>
-        <ion-item menu-close class="item-icon-left item-icon-right"  ng-click="getbanks('招商银行')">
-          <i class="icon ion-person-add merchantsbank-button"></i>
+        <ion-item menu-close class="item item-avatar-left item-icon-right"  ng-click="getbanks('招商银行')">
+          <!--<i class="icon ion-person-add merchantsbank-button"></i>-->
+          <img  style="width: 40px;height: 40px" src="img/merchantsbank.jpg">
           <i class="icon ion-ios-arrow-forward"></i>
-          <a class="menubankname" >招商银行</a>
+          <div class="menubankname" >招商银行</div>
 
         </ion-item>
-        <ion-item menu-close class="item-icon-left item-icon-right"  ng-click="getbanks('建设银行')">
-          <i class="icon ion-person-add buildbank-button"></i>
+        <ion-item menu-close class="item item-avatar-left item-icon-right"  ng-click="getbanks('建设银行')">
+          <!--<i class="icon ion-person-add buildbank-button"></i>-->
+          <img style="width: 40px;height: 40px" src="img/buildbank.jpg">
           <i class="icon ion-ios-arrow-forward"></i>
-          <a class="menubankname" >建设银行</a>
+          <div class="menubankname" >建设银行</div>
 
         </ion-item>
-        <ion-item menu-close class="item-icon-left item-icon-right"  ng-click="getbanks('工商银行')">
-          <i class="icon ion-person-add icbcbank-button"></i>
+        <ion-item menu-close class="item item-avatar-left item-icon-right"  ng-click="getbanks('工商银行')">
+          <img style="width: 40px;height: 40px" src="img/icbcbank.jpg">
           <i class="icon ion-ios-arrow-forward"></i>
-          <a class="menubankname" >工商银行</a>
+          <div class="menubankname" >工商银行</div>
 
         </ion-item>
 
-        <ion-item menu-close class="item-icon-left item-icon-right"  ng-click="getbanks('北京银行')">
-          <i class="icon ion-person-add beijingbank-button"></i>
+        <ion-item menu-close class="item item-avatar-left item-icon-right"  ng-click="getbanks('北京银行')">
+          <!--<i class="icon ion-person-add beijingbank-button"></i>-->
+          <img style="width: 40px;height: 40px" src="img/beijingbank.png">
           <i class="icon ion-ios-arrow-forward"></i>
-          <a class="menubankname" >北京银行</a>
+          <div class="menubankname" >北京银行</div>
 
         </ion-item>
-        <ion-item menu-close class="item-icon-left item-icon-right"  ng-click="getbanks('温州银行')">
+        <ion-item menu-close class="item item-avatar-left item-icon-right"  ng-click="getbanks('温州银行')">
+          <!--<i class="icon ion-person-add wzbank-button"></i>-->
+          <img style="width: 40px;height: 40px" src="img/wzbank.png">
+          <i class="icon ion-ios-arrow-forward"></i>
+          <div class="menubankname" >温州银行</div>
+
+        </ion-item>
+        <!--<ion-item menu-close class="item-icon-left item-icon-right"  ng-click="getbanks('温州银行')">
           <i class="icon ion-person-add wzbank-button"></i>
           <i class="icon ion-ios-arrow-forward"></i>
           <a class="menubankname" >温州银行</a>
 
-        </ion-item>
+        </ion-item>-->
 
       </ion-list>
     </ion-content>
