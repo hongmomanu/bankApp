@@ -105,10 +105,17 @@
 (def.controller starter.controllers.PlaylistCtrl [$scope $stateParams $compile]
   ;(! $scope.tipdetail (fn [bankid] (js/alert "wwwww")))
   )
-(def.controller starter.controllers.mapCtrl [$scope $stateParams $compile]
+(def.controller starter.controllers.mapCtrl [$scope $stateParams $compile $ionicModal]
 
-  (! $scope.tipdetail (fn [bankid] (println "hhhhhh")))
-  (println "map")
+  (! $scope.tipdetail (fn [bankid]
+
+                        (println bankid)
+
+                        (-> (.fromTemplateUrl $ionicModal "templates/bankinfo.html" (obj :scope $scope))
+                          (.then (fn [modal] (.show modal) ))
+                          )))
+
+
 
   (swap! global-hub assoc "map" (.setView (js/L.map "map" (obj :zoomControl false  ))  (array 30.00641 120.580176 ) 13))
   ;(! bankmap  (.setView (js/L.map "map" (obj :zoomControl false ))  (array 30.00641 120.580176 ) 13))
