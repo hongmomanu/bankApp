@@ -145,7 +145,7 @@
                                                                                       ))) )
                                       (get @global-hub "map"))
 
-                                    (str "名称:" item.bankname "<br>" "地址:" item.address) ))
+                                    (str "名称:" item.bankname "<br>" "地址:" item.address "") ))
 
          ]
 

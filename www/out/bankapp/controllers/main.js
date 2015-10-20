@@ -8,28 +8,28 @@ bankapp.controllers.main.serverurl = "http://localhost:3000/";
 bankapp.controllers.main.global_hub = cljs.core.atom.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"markers","markers",-246919693),cljs.core.PersistentVector.EMPTY], null));
 bankapp.controllers.main.starter_controllers = angular.module("starter.controllers",[]);
 bankapp.controllers.main.starter_MapService = ["$http",(function ($http){
-var G__11374 = {};
-(G__11374["getbanksbytype"] = ((function (G__11374){
+var G__11430 = {};
+(G__11430["getbanksbytype"] = ((function (G__11430){
 return (function (type){
-return $http.post([cljs.core.str(bankapp.controllers.main.serverurl),cljs.core.str("getbanksbytype")].join(''),(((type == null))?null:(function (){var G__11378 = {};
-(G__11378["type"] = type);
+return $http.post([cljs.core.str(bankapp.controllers.main.serverurl),cljs.core.str("getbanksbytype")].join(''),(((type == null))?null:(function (){var G__11434 = {};
+(G__11434["type"] = type);
 
-return G__11378;
-})())).then(((function (G__11374){
+return G__11434;
+})())).then(((function (G__11430){
 return (function (response){
 return response;
-});})(G__11374))
+});})(G__11430))
 );
-});})(G__11374))
+});})(G__11430))
 );
 
-return G__11374;
+return G__11430;
 })];
 
 angular.module("starter").service("MapService",bankapp.controllers.main.starter_MapService);
 bankapp.controllers.main.starter_controllers_AppCtrl = ["$scope","$ionicModal","$timeout","$ionicLoading","MapService",(function ($scope,$ionicModal,$timeout,$ionicLoading,MapService){
-var o_SHARP__11388 = $scope;
-(o_SHARP__11388["loginData"] = cljs.core.PersistentArrayMap.EMPTY);
+var o_SHARP__11444 = $scope;
+(o_SHARP__11444["loginData"] = cljs.core.PersistentArrayMap.EMPTY);
 
 
 $ionicModal.fromTemplateUrl("templates/login.html",cljs.core.clj__GT_js.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"scope","scope",-439358418),$scope], null))).then((function (modal){
@@ -39,55 +39,55 @@ var o_SHARP_ = $scope;
 return o_SHARP_;
 }));
 
-var o_SHARP__11389 = $scope;
-(o_SHARP__11389["getbanks"] = ((function (o_SHARP__11389){
+var o_SHARP__11445 = $scope;
+(o_SHARP__11445["getbanks"] = ((function (o_SHARP__11445){
 return (function (type){
 cljs.core.println.call(null,"1212122");
 
-cljs.core.dorun.call(null,cljs.core.map.call(null,((function (o_SHARP__11389){
-return (function (p1__11382_SHARP_){
-return cljs.core.get.call(null,cljs.core.deref.call(null,bankapp.controllers.main.global_hub),"map").removeLayer(p1__11382_SHARP_);
-});})(o_SHARP__11389))
+cljs.core.dorun.call(null,cljs.core.map.call(null,((function (o_SHARP__11445){
+return (function (p1__11438_SHARP_){
+return cljs.core.get.call(null,cljs.core.deref.call(null,bankapp.controllers.main.global_hub),"map").removeLayer(p1__11438_SHARP_);
+});})(o_SHARP__11445))
 ,cljs.core.get.call(null,cljs.core.deref.call(null,bankapp.controllers.main.global_hub),"markers")));
 
 cljs.core.swap_BANG_.call(null,bankapp.controllers.main.global_hub,cljs.core.assoc,"markers",cljs.core.PersistentVector.EMPTY);
 
-$ionicLoading.show((function (){var G__11384 = {};
-(G__11384["template"] = "\u52A0\u8F7D\u4E2D..");
+$ionicLoading.show((function (){var G__11440 = {};
+(G__11440["template"] = "\u52A0\u8F7D\u4E2D..");
 
-(G__11384["duration"] = (30000));
+(G__11440["duration"] = (30000));
 
-return G__11384;
+return G__11440;
 })());
 
-return MapService.getbanksbytype(type).then(((function (o_SHARP__11389){
+return MapService.getbanksbytype(type).then(((function (o_SHARP__11445){
 return (function (response){
 $ionicLoading.hide();
 
-return cljs.core.dorun.call(null,cljs.core.map.call(null,((function (o_SHARP__11389){
-return (function (p1__11383_SHARP_){
-return bankapp.controllers.main.makemark.call(null,p1__11383_SHARP_);
-});})(o_SHARP__11389))
+return cljs.core.dorun.call(null,cljs.core.map.call(null,((function (o_SHARP__11445){
+return (function (p1__11439_SHARP_){
+return bankapp.controllers.main.makemark.call(null,p1__11439_SHARP_);
+});})(o_SHARP__11445))
 ,(response["data"])));
-});})(o_SHARP__11389))
+});})(o_SHARP__11445))
 );
-});})(o_SHARP__11389))
+});})(o_SHARP__11445))
 );
 
 
-var o_SHARP__11390 = $scope;
-(o_SHARP__11390["closeLogin"] = ((function (o_SHARP__11390){
+var o_SHARP__11446 = $scope;
+(o_SHARP__11446["closeLogin"] = ((function (o_SHARP__11446){
 return (function (){
 return ($scope["modal"]).hide();
-});})(o_SHARP__11390))
+});})(o_SHARP__11446))
 );
 
 
-var o_SHARP__11391 = $scope;
-(o_SHARP__11391["login"] = ((function (o_SHARP__11391){
+var o_SHARP__11447 = $scope;
+(o_SHARP__11447["login"] = ((function (o_SHARP__11447){
 return (function (){
 return ($scope["modal"]).show();
-});})(o_SHARP__11391))
+});})(o_SHARP__11447))
 );
 
 
@@ -124,29 +124,29 @@ cljs.core.println.call(null,"map");
 
 cljs.core.swap_BANG_.call(null,bankapp.controllers.main.global_hub,cljs.core.assoc,"map",(function (){var obj_SHARP_ = L;
 var fn_SHARP_ = (obj_SHARP_["map"]);
-return fn_SHARP_.call(obj_SHARP_,"map",(function (){var G__11392 = {};
-(G__11392["zoomControl"] = false);
+return fn_SHARP_.call(obj_SHARP_,"map",(function (){var G__11448 = {};
+(G__11448["zoomControl"] = false);
 
-return G__11392;
+return G__11448;
 })());
 })().setView([30.00641,120.580176],(13)));
 
 var bankmap = cljs.core.get.call(null,cljs.core.deref.call(null,bankapp.controllers.main.global_hub),"map");
 (function (){var obj_SHARP_ = L;
 var fn_SHARP_ = (obj_SHARP_["tileLayer"]);
-return fn_SHARP_.call(obj_SHARP_,"http://t{s}.tianditu.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",(function (){var G__11396 = {};
-(G__11396["subdomains"] = "012345");
+return fn_SHARP_.call(obj_SHARP_,"http://t{s}.tianditu.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",(function (){var G__11452 = {};
+(G__11452["subdomains"] = "012345");
 
-return G__11396;
+return G__11452;
 })());
 })().addTo(bankmap);
 
 return (function (){var obj_SHARP_ = L;
 var fn_SHARP_ = (obj_SHARP_["tileLayer"]);
-return fn_SHARP_.call(obj_SHARP_,[cljs.core.str("http://t{s}.tianditu.com/cva_w/wmts?"),cljs.core.str("SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles"),cljs.core.str("&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}")].join(''),(function (){var G__11400 = {};
-(G__11400["subdomains"] = "012345");
+return fn_SHARP_.call(obj_SHARP_,[cljs.core.str("http://t{s}.tianditu.com/cva_w/wmts?"),cljs.core.str("SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles"),cljs.core.str("&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}")].join(''),(function (){var G__11456 = {};
+(G__11456["subdomains"] = "012345");
 
-return G__11400;
+return G__11456;
 })());
 })().addTo(bankmap);
 })];
@@ -156,29 +156,29 @@ cljs.core.println.call(null,"Hello world initssssssss  sssssss!");
 bankapp.controllers.main.makemark = (function bankapp$controllers$main$makemark(item){
 item.loc.coordinates.reverse();
 
-var redMarker = L.AwesomeMarkers.icon((function (){var G__11416 = {};
-(G__11416["iconColor"] = "black");
+var redMarker = L.AwesomeMarkers.icon((function (){var G__11472 = {};
+(G__11472["iconColor"] = "black");
 
-(G__11416["icon"] = "location");
+(G__11472["icon"] = "location");
 
-(G__11416["prefix"] = "ion");
+(G__11472["prefix"] = "ion");
 
-return G__11416;
+return G__11472;
 })());
-var markerlayer = L.marker(item.loc.coordinates,(function (){var G__11420 = {};
-(G__11420["icon"] = (function (){var obj_SHARP_ = (L["AwesomeMarkers"]);
+var markerlayer = L.marker(item.loc.coordinates,(function (){var G__11476 = {};
+(G__11476["icon"] = (function (){var obj_SHARP_ = (L["AwesomeMarkers"]);
 var fn_SHARP_ = (obj_SHARP_["icon"]);
-return fn_SHARP_.call(obj_SHARP_,(function (){var G__11424 = {};
-(G__11424["icon"] = "location");
+return fn_SHARP_.call(obj_SHARP_,(function (){var G__11480 = {};
+(G__11480["icon"] = "location");
 
-(G__11424["prefix"] = "ion");
+(G__11480["prefix"] = "ion");
 
-return G__11424;
+return G__11480;
 })());
 })());
 
-return G__11420;
-})()).addTo(cljs.core.get.call(null,cljs.core.deref.call(null,bankapp.controllers.main.global_hub),"map")).bindPopup([cljs.core.str("\u540D\u79F0:"),cljs.core.str(item.bankname),cljs.core.str("<br>"),cljs.core.str("\u5730\u5740:"),cljs.core.str(item.address)].join('')).openPopup();
+return G__11476;
+})()).addTo(cljs.core.get.call(null,cljs.core.deref.call(null,bankapp.controllers.main.global_hub),"map")).bindPopup([cljs.core.str("\u540D\u79F0:"),cljs.core.str(item.bankname),cljs.core.str("<br>"),cljs.core.str("\u5730\u5740:"),cljs.core.str(item.address),cljs.core.str("")].join('')).openPopup();
 return cljs.core.swap_BANG_.call(null,bankapp.controllers.main.global_hub,cljs.core.assoc,"markers",cljs.core.conj.call(null,cljs.core.get.call(null,cljs.core.deref.call(null,bankapp.controllers.main.global_hub),"markers"),markerlayer));
 });
 bankapp.controllers.main.foo = (function bankapp$controllers$main$foo(a,b){
