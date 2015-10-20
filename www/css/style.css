@@ -16,29 +16,71 @@
 }
 .sxbank-button {
   content: url('../img/sxyh.png');
-  width: 35px;
+  vertical-align: middle;
+  margin-top: 5px;
+  margin-right: 10px;
+  width: 40px;
+  height:40px !important;
 }
 .chinabank-button {
   content: url('../img/chinabank.jpg');
-  width: 35px;
+  margin-top: 5px;
+  margin-right: 10px;
+  width: 40px;
+  height:40px !important;
 }
 .merchantsbank-button {
   content: url('../img/merchantsbank.jpg');
-  width: 35px;
+  width: 40px;
+  margin-top: 5px;
+  margin-right: 10px;
+  height:40px !important;
 }
 .buildbank-button {
   content: url('../img/buildbank.jpg');
-  width: 35px;
+  width: 40px;
+  margin-top: 5px;
+  margin-right: 10px;
+  height:40px !important;
 }
 .icbcbank-button {
   content: url('../img/icbcbank.jpg');
-  width: 35px;
+  width: 40px;
+  margin-top: 5px;
+  margin-right: 10px;
+  height:40px !important;
 }
 .beijingbank-button {
   content: url('../img/beijingbank.png');
-  width: 35px;
+  width: 40px;
+  margin-top: 5px;
+  margin-right: 10px;
+  height:40px !important;
 }
 .wzbank-button {
   content: url('../img/wzbank.png');
-  width: 35px;
+  width: 40px;
+  margin-top: 5px;
+  margin-right: 10px;
+  height:40px !important;
+}
+.blackmenu{
+
+  border-color: #111;
+  background-color: #444444 !important;
+  /*background-image: linear-gradient(0deg, #111, #111 50%, transparent 50%);*/
+  color: #fff;
+
+}
+.blackmenu .item {
+  background-color: transparent;
+  border-color: #444444;
+  vertical-align: middle;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  color: #F0F1F1;
+}
+.menubankname{
+
+  margin-left: 10px;
 }
