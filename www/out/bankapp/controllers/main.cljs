@@ -145,7 +145,10 @@
                                                                                       ))) )
                                       (get @global-hub "map"))
 
-                                    (str "名称:" item.bankname "<br>" "地址:" item.address "") ))
+                                    (str "<div class=\"tipdiv\">名称:" item.bankname "<br>" "地址:" item.address "<br></div>"
+                                      "<div class=\"tipbutton\"><a class=\"button button-icon icon ion-android-compass\">导航</a>"
+                                      "&nbsp;&nbsp;&nbsp;&nbsp;<a class=\"button button-icon icon ion-android-apps\">详细</a></div>"
+                                      ) ))
 
          ]
 

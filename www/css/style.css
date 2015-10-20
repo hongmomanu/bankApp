@@ -6,3 +6,10 @@
   -ms-flex: 0 1 100% !important;
   flex: 0 1 100% !important;
 }
+.tipdiv{
+  font-size: large;
+  color: #222222;
+}
+.tipbutton{
+  text-align: center;
+}
