@@ -14,4 +14,31 @@
   text-align: center;
   color: #222222;
 }
-
+.sxbank-button {
+  content: url('../img/sxyh.png');
+  width: 35px;
+}
+.chinabank-button {
+  content: url('../img/chinabank.jpg');
+  width: 35px;
+}
+.merchantsbank-button {
+  content: url('../img/merchantsbank.jpg');
+  width: 35px;
+}
+.buildbank-button {
+  content: url('../img/buildbank.jpg');
+  width: 35px;
+}
+.icbcbank-button {
+  content: url('../img/icbcbank.jpg');
+  width: 35px;
+}
+.beijingbank-button {
+  content: url('../img/beijingbank.png');
+  width: 35px;
+}
+.wzbank-button {
+  content: url('../img/wzbank.png');
+  width: 35px;
+}
