@@ -58,7 +58,7 @@
 
                        (dorun (map #(.removeLayer (get @global-hub "map")  % ) (get @global-hub "markers")) )
                        (swap! global-hub assoc "markers" [])
-                       (.show $ionicLoading (obj :template "加载中.."  :duration 30000))
+                       (.show $ionicLoading (obj :template "加载中.."  :duration 5000))
                        (let [
                               type (if (= type "all") nil type)
                               ]
@@ -107,17 +107,24 @@
 (def.controller starter.controllers.PlaylistCtrl [$scope $stateParams $compile]
   ;(! $scope.tipdetail (fn [bankid] (js/alert "wwwww")))
   )
-(def.controller starter.controllers.mapCtrl [$scope $stateParams $compile $ionicModal]
+(def.controller starter.controllers.mapCtrl [$scope $stateParams $compile $ionicModal $ionicLoading]
 
   (! $scope.bankinfowion {})
 
   (! $scope.waitingnumber "20")
   (! $scope.nownumber "121")
 
-  (! $scope.closebankinfowin (fn []
+  (! $scope.nowBoot (fn []
 
-                               ;(.hide $scope.bankinfowion)
-                               (println "hahaha")
+                      (println "boot")
+                      (.show $ionicLoading (obj :template "接口暂时未开放.."  :duration 3000))
+
+                      ))
+
+  (! $scope.closebankinfoWin (fn []
+
+                               (.hide $scope.bankinfowion)
+                               ;(println "hahaha")
                                ))
 
   (! $scope.tipdetail (fn [bankid]
