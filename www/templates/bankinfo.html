@@ -10,15 +10,15 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">当前业务号</span>
-          <input type="text" readonly="readonly"  >
+          <input type="text"  ng-model="nownumber" readonly="readonly"  >
         </label>
         <label class="item item-input">
           <span class="input-label">待办理号数</span>
-          <input type="password" readonly="readonly" >
+          <input type="text" ng-model="waitingnumber" readonly="readonly" >
         </label>
         <label class="item">
-          <button class="button button-block button-positive ion-android-checkbox" >我要预约</button>
-          <button class="button button-block button-positive ion-android-cancel" >关闭窗口</button>
+          <button class="button button-block button-dark ion-android-checkbox" >我要预约</button>
+          <button class="button button-block button-dark ion-android-cancel" ng-click="closebankinfowin()">关闭窗口</button>
         </label>
       </div>
 

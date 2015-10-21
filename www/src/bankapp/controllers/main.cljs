@@ -56,7 +56,6 @@
 
   (! $scope.getbanks (fn [type]
 
-                       (println "1212122")
                        (dorun (map #(.removeLayer (get @global-hub "map")  % ) (get @global-hub "markers")) )
                        (swap! global-hub assoc "markers" [])
                        (.show $ionicLoading (obj :template "加载中.."  :duration 30000))
@@ -110,13 +109,30 @@
   )
 (def.controller starter.controllers.mapCtrl [$scope $stateParams $compile $ionicModal]
 
+  (! $scope.bankinfowion {})
+
+  (! $scope.waitingnumber "20")
+  (! $scope.nownumber "121")
+
+  (! $scope.closebankinfowin (fn []
+
+                               ;(.hide $scope.bankinfowion)
+                               (println "hahaha")
+                               ))
+
   (! $scope.tipdetail (fn [bankid]
 
                         (println bankid)
 
                         (-> (.fromTemplateUrl $ionicModal "templates/bankinfo.html" (obj :scope $scope))
-                          (.then (fn [modal] (.show modal) ))
+                          (.then (fn [modal]
+                                   (! $scope.bankinfowion modal)
+                                   (.show $scope.bankinfowion)
+                                   ))
                           )))
+
+
+
 
 
 
